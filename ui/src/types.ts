@@ -4,11 +4,17 @@ export interface ProviderTransformer {
 }
 
 export interface Provider {
+  id: string;
   name: string;
-  api_base_url: string;
-  api_key: string;
+  type: 'openai' | 'azure';
+  apiKey: string;
+  baseURL?: string; // Optional: for standard OpenAI
   models: string[];
   transformer?: ProviderTransformer;
+  // Azure-specific fields
+  azureResourceName?: string;
+  azureDeploymentName?: string;
+  azureApiVersion?: string;
 }
 
 export interface RouterConfig {

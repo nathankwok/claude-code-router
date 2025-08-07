@@ -15,7 +15,18 @@
   ],
   "Providers": [
     {
+      "id": "azure-gpt-4",
+      "name": "Azure GPT-4",
+      "type": "azure",
+      "apiKey": "your-azure-api-key-goes-here",
+      "models": ["gpt-4", "gpt-4-32k"],
+      "azureResourceName": "my-azure-openai-resource",
+      "azureDeploymentName": "my-gpt4-deployment",
+      "azureApiVersion": "2024-02-01"
+    },
+    {
       "name": "siliconflow",
+      "type": "openai",
       "api_base_url": "https://api.moonshot.cn/v1/chat/completions",
       "api_key": "sk-",
       "models": [

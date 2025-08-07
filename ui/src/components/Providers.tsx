@@ -91,7 +91,7 @@ export function Providers() {
 
 
   const handleAddProvider = () => {
-    const newProvider: ProviderType = { name: "", api_base_url: "", api_key: "", models: [] };
+    const newProvider: ProviderType = { name: "", type: "openai", api_base_url: "", api_key: "", models: [] };
     setEditingProviderIndex(config.Providers.length);
     setEditingProviderData(newProvider);
     setIsNewProvider(true);
@@ -544,9 +544,53 @@ export function Providers() {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="api_base_url">{t("providers.api_base_url")}</Label>
-                <Input id="api_base_url" value={editingProvider.api_base_url || ''} onChange={(e) => handleProviderChange(editingProviderIndex, 'api_base_url', e.target.value)} />
+                <Label>{t("providers.provider_type")}</Label>
+                <div className="flex gap-4">
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      id="openai"
+                      name="providerType"
+                      value="openai"
+                      checked={!editingProvider.type || editingProvider.type === 'openai'}
+                      onChange={() => handleProviderChange(editingProviderIndex, 'type', 'openai')}
+                    />
+                    <Label htmlFor="openai">OpenAI</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      id="azure"
+                      name="providerType"
+                      value="azure"
+                      checked={editingProvider.type === 'azure'}
+                      onChange={() => handleProviderChange(editingProviderIndex, 'type', 'azure')}
+                    />
+                    <Label htmlFor="azure">Azure OpenAI</Label>
+                  </div>
+                </div>
               </div>
+              {editingProvider.type === 'azure' ? (
+                <>
+                  <div className="space-y-2">
+                    <Label htmlFor="azureResourceName">{t("providers.azure_resource_name")}</Label>
+                    <Input id="azureResourceName" value={editingProvider.azureResourceName || ''} onChange={(e) => handleProviderChange(editingProviderIndex, 'azureResourceName', e.target.value)} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="azureDeploymentName">{t("providers.azure_deployment_name")}</Label>
+                    <Input id="azureDeploymentName" value={editingProvider.azureDeploymentName || ''} onChange={(e) => handleProviderChange(editingProviderIndex, 'azureDeploymentName', e.target.value)} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="azureApiVersion">{t("providers.azure_api_version")}</Label>
+                    <Input id="azureApiVersion" value={editingProvider.azureApiVersion || ''} onChange={(e) => handleProviderChange(editingProviderIndex, 'azureApiVersion', e.target.value)} />
+                  </div>
+                </>
+              ) : (
+                <div className="space-y-2">
+                  <Label htmlFor="api_base_url">{t("providers.api_base_url")}</Label>
+                  <Input id="api_base_url" value={editingProvider.api_base_url || ''} onChange={(e) => handleProviderChange(editingProviderIndex, 'api_base_url', e.target.value)} />
+                </div>
+              )}
               <div className="space-y-2">
                 <Label htmlFor="api_key">{t("providers.api_key")}</Label>
                 <div className="relative">

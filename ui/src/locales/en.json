@@ -93,7 +93,11 @@
     "select_template": "Select a template...",
     "api_key_required": "API Key is required",
     "name_required": "Name is required",
-    "name_duplicate": "A provider with this name already exists"
+    "name_duplicate": "A provider with this name already exists",
+    "provider_type": "Provider Type",
+    "azure_resource_name": "Azure Resource Name",
+    "azure_deployment_name": "Azure Deployment Name",
+    "azure_api_version": "Azure API Version"
 
   },
   "router": {

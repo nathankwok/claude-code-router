@@ -93,7 +93,11 @@
     "select_template": "选择一个模板...",
     "api_key_required": "API 密钥为必填项",
     "name_required": "名称为必填项",
-    "name_duplicate": "已存在同名供应商"
+    "name_duplicate": "已存在同名供应商",
+    "provider_type": "供应商类型",
+    "azure_resource_name": "Azure 资源名称",
+    "azure_deployment_name": "Azure 部署名称",
+    "azure_api_version": "Azure API 版本"
 
   },
   "router": {
