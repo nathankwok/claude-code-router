@@ -49,10 +49,10 @@ Azure OpenAI differs from standard OpenAI in several key ways:
 ## Implementation Phases
 
 ### Phase 1: Core Azure OpenAI Provider Support
+**Objective**: Implement basic Azure OpenAI provider functionality  
+**Timeline**: 3-5 days
 
-**Objective**: Implement basic Azure OpenAI provider functionality
-
-**Tasks**:
+#### Tasks:
 1. **Extend ModelProvider Interface**
    - Add optional Azure-specific fields to ModelProvider interface
    - Fields: `resource?`, `deployment?`, `apiVersion?`, `providerType?`
@@ -77,17 +77,19 @@ Azure OpenAI differs from standard OpenAI in several key ways:
    - Set `api-key` header for Azure providers
    - Maintain compatibility with standard OpenAI Bearer tokens
 
-**Acceptance Criteria**:
+#### Acceptance Criteria:
 - [ ] Azure providers can be detected from configuration
 - [ ] Azure OpenAI URLs are constructed correctly
 - [ ] API key authentication works for Azure endpoints
 - [ ] Standard OpenAI providers remain unaffected
 
+---
+
 ### Phase 2: Configuration Schema Updates
+**Objective**: Extend configuration system to support Azure OpenAI parameters  
+**Timeline**: 2-3 days
 
-**Objective**: Extend configuration system to support Azure OpenAI parameters
-
-**Tasks**:
+#### Tasks:
 1. **Update Configuration Types**
    - Extend existing provider types with Azure fields
    - Add validation for Azure-specific required fields
@@ -112,17 +114,19 @@ Azure OpenAI differs from standard OpenAI in several key ways:
    - Support Azure configuration via environment variables
    - `AZURE_OPENAI_RESOURCE`, `AZURE_OPENAI_DEPLOYMENT`, etc.
 
-**Acceptance Criteria**:
+#### Acceptance Criteria:
 - [ ] Azure configuration validates properly
 - [ ] Helpful error messages for invalid config
 - [ ] Existing configurations remain valid
 - [ ] Environment variables work for Azure settings
 
+---
+
 ### Phase 3: Request/Response Transformation
+**Objective**: Handle Azure-specific request/response formatting  
+**Timeline**: 3-4 days
 
-**Objective**: Handle Azure-specific request/response formatting
-
-**Tasks**:
+#### Tasks:
 1. **Create Azure URL Transformer**
    - Transform base URLs to Azure format
    - Inject deployment names and API versions
@@ -148,17 +152,19 @@ Azure OpenAI differs from standard OpenAI in several key ways:
    - Implement retry logic for throttling
    - Support quota management
 
-**Acceptance Criteria**:
+#### Acceptance Criteria:
 - [ ] Requests are properly formatted for Azure
 - [ ] Model names map to deployments correctly
 - [ ] API versions are handled appropriately
 - [ ] Error responses are standardized
 
+---
+
 ### Phase 4: Integration and Middleware Updates
+**Objective**: Integrate Azure support with existing middleware pipeline  
+**Timeline**: 2-3 days
 
-**Objective**: Integrate Azure support with existing middleware pipeline
-
-**Tasks**:
+#### Tasks:
 1. **Update Router Middleware**
    - Ensure Azure providers work with routing logic
    - Handle Azure-specific model selection
@@ -184,17 +190,19 @@ Azure OpenAI differs from standard OpenAI in several key ways:
    - Include deployment and resource info in logs
    - Support debugging Azure connectivity issues
 
-**Acceptance Criteria**:
+#### Acceptance Criteria:
 - [ ] Azure providers work with existing middleware
 - [ ] Provider caching works correctly
 - [ ] Error handling is comprehensive
 - [ ] Logging provides useful debugging info
 
+---
+
 ### Phase 5: Documentation and User Experience
+**Objective**: Provide comprehensive documentation and examples  
+**Timeline**: 2-3 days
 
-**Objective**: Provide comprehensive documentation and examples
-
-**Tasks**:
+#### Tasks:
 1. **Configuration Guide**
    - Step-by-step Azure OpenAI setup
    - Common deployment patterns
@@ -220,11 +228,24 @@ Azure OpenAI differs from standard OpenAI in several key ways:
    - Include quick start example
    - Link to detailed documentation
 
-**Acceptance Criteria**:
+#### Acceptance Criteria:
 - [ ] Complete setup documentation available
 - [ ] Migration examples provided
 - [ ] Troubleshooting guide comprehensive
 - [ ] README updated with Azure support
+
+---
+
+## Phase Summary
+**Total Estimated Time**: 12-18 days
+
+| Phase | Timeline | Focus |
+|-------|----------|-------|
+| Phase 1 | 3-5 days | Core functionality |
+| Phase 2 | 2-3 days | Configuration updates |
+| Phase 3 | 3-4 days | Transformations |
+| Phase 4 | 2-3 days | Integration |
+| Phase 5 | 2-3 days | Documentation |
 
 ## Technical Specifications
 
